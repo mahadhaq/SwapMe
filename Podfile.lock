@@ -1,0 +1,71 @@
+PODS:
+  - Alamofire (4.8.2)
+  - CountryList (1.1)
+  - CryptoSwift (0.15.0)
+  - DatePickerDialog (3.0)
+  - IQKeyboardManagerSwift (6.4.1)
+  - JSQMessagesViewController (7.3.5):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
+  - MIBadgeButton-Swift (0.4)
+  - PusherSwift (7.2.0):
+    - CryptoSwift (~> 0.9)
+    - ReachabilitySwift (= 4.3.0)
+    - Starscream (~> 3.0.5)
+  - PushNotifications (2.1.2)
+  - ReachabilitySwift (4.3.0)
+  - RSSelectionMenu (6.0.4)
+  - SDWebImage (5.1.0):
+    - SDWebImage/Core (= 5.1.0)
+  - SDWebImage/Core (5.1.0)
+  - Starscream (3.0.6)
+
+DEPENDENCIES:
+  - Alamofire
+  - CountryList
+  - DatePickerDialog
+  - IQKeyboardManagerSwift
+  - JSQMessagesViewController
+  - MIBadgeButton-Swift
+  - PusherSwift
+  - PushNotifications
+  - RSSelectionMenu
+  - SDWebImage
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - CountryList
+    - CryptoSwift
+    - DatePickerDialog
+    - IQKeyboardManagerSwift
+    - JSQMessagesViewController
+    - JSQSystemSoundPlayer
+    - PusherSwift
+    - PushNotifications
+    - ReachabilitySwift
+    - RSSelectionMenu
+    - SDWebImage
+    - Starscream
+  trunk:
+    - MIBadgeButton-Swift
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  CountryList: ad58cd670c4ecab6bb014abebc12e63f619174b2
+  CryptoSwift: 769f58a9e89f64e8796c2e59ce5f002dc81a2438
+  DatePickerDialog: 03dbb8350bfa80302ab2a8c83cee1fec70184444
+  IQKeyboardManagerSwift: d2df660d0b8d64a15cb2537c9ff303213fa515b2
+  JSQMessagesViewController: 6587f56aedbcb150a8ba1d968e1ef58b1bc758b7
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  MIBadgeButton-Swift: b5d07924904c84bcb8e8fe3c3131b8499f28930c
+  PusherSwift: a5369a01e8a9106b4897e9186265af1426726062
+  PushNotifications: 3d1ac73f4e1e9dc3de8fa8319e3e53bd00be47dc
+  ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
+  RSSelectionMenu: 1dc497c68e81aa09e6c7f91432403cc2bc5ad816
+  SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
+
+PODFILE CHECKSUM: 06d0cdbff3ac38d8b76fb5ffa7b58ea251b4bbb3
+
+COCOAPODS: 1.8.4
