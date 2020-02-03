@@ -10,15 +10,17 @@ import UIKit
 import IQKeyboardManagerSwift
 import PushNotifications
 import UserNotifications
+import PusherSwift
 
 @UIApplicationMain
- class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate  {
+ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate,PusherDelegate  {
 
     var window: UIWindow?
     
     var LastViewController:UIViewController?
     var homeViewController:HomeViewController?
     
+    var pusher : Pusher!
     
     let userNotificationCenter = UNUserNotificationCenter.current()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -50,6 +52,7 @@ import UserNotifications
                 print("User has declined notifications")
             }
         }
+        
         
         
         return true
@@ -100,7 +103,160 @@ import UserNotifications
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    func SubscribetoPusher()  {
+        self.PushershiftstatusResponce()
+        self.PusherNotificationResponce()
+        self.PushershiftrequestResponce()
+        self.PushershiftrequestnomoreResponce()
+    }
     
+    func PusherNotificationResponce(){
+        let options = PusherClientOptions(
+            authMethod: AuthMethod.endpoint(authEndpoint: "http://app.pyprentals.com/api/auth"),
+            host: .cluster("ap2")
+        )
+        
+        pusher = Pusher(key: "0b6389c92afdc83c6e18", options: options)
+
+        print(pusher.connection.url);
+        //
+        let userid : String = UserDefaults.standard.string(forKey:"uid")!
+        print(userid)
+        let channel = pusher.subscribe("private-user."+userid+".notifications")
+        
+        
+        let _ = channel.bind(eventName: "Notification", callback: { (data: Any?) -> Void in
+            
+            if let data = data as? [String : AnyObject] {
+                print(data)
+                let alertController = UIAlertController(title: "Success", message: "Testing1", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: {(alert : UIAlertAction!) in
+                    
+                    alertController.dismiss(animated: true, completion: nil)
+                })
+                
+                alertController.addAction(alertAction)
+                
+//                self.present(alertController, animated: true, completion: nil)
+            }
+        })
+        pusher.connection.delegate = self
+        pusher.connect()
+    }
+    
+    func PushershiftrequestResponce(){
+        let options = PusherClientOptions(
+            authMethod: AuthMethod.endpoint(authEndpoint: "http://app.pyprentals.com/api/auth"),
+            host: .cluster("ap2")
+        )
+        
+        pusher = Pusher(key: "0b6389c92afdc83c6e18", options: options)
+        pusher.connection.delegate = self
+        
+        //
+        let userid : String = UserDefaults.standard.string(forKey:"uid")!
+        print(userid)
+        let channel = pusher.subscribe("private-user."+userid+".notifications")
+        
+        
+        let _ = channel.bind(eventName: "shift_request", callback: { (data: Any?) -> Void in
+            
+            if let data = data as? [String : AnyObject] {
+                print(data)
+                let alertController = UIAlertController(title: "Success", message: "Accept/Reject", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: {(alert : UIAlertAction!) in
+                    
+                    alertController.dismiss(animated: true, completion: nil)
+                })
+                
+                alertController.addAction(alertAction)
+                
+//                self.present(alertController, animated: true, completion: nil)
+            }
+        })
+        
+        pusher.connect()
+        print(pusher.connection.url);
+    }
+    
+    func PushershiftstatusResponce(){
+        let options = PusherClientOptions(
+            authMethod: AuthMethod.endpoint(authEndpoint: "http://app.pyprentals.com/api/auth"),
+            host: .cluster("ap2")
+        )
+        
+        pusher = Pusher(key: "0b6389c92afdc83c6e18", options: options)
+        pusher.connection.delegate = self
+        
+        //
+        let userid : String = UserDefaults.standard.string(forKey:"uid")!
+        print(userid)
+        let channel = pusher.subscribe("private-user."+userid+".notifications")
+        
+        let _ = channel.bind(eventName: EVENT_NAME_SHIFT_REQUEST_STATUS_NOTIFICATION, eventCallback: { (event: PusherEvent) in
+            
+            if let data = event.data {
+              // you can parse the data as necessary
+              print(data)
+            }
+        })
+        
+//        let _ = channel.bind(eventName: "shift_status", callback: { (data: Any?) -> Void in
+//
+//            if let data = data as? [String : AnyObject] {
+//                print(data)
+//
+//                let alertController = UIAlertController(title: "Success", message: "Testing2", preferredStyle: .alert)
+//                let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: {(alert : UIAlertAction!) in
+//
+//                    alertController.dismiss(animated: true, completion: nil)
+//                })
+//
+//                alertController.addAction(alertAction)
+//
+////                self.present(alertController, animated: true, completion: nil)
+//
+//            }
+//        })
+        pusher.connect()
+        print(pusher.connection.url);
+    }
+    
+    func PushershiftrequestnomoreResponce(){
+        let options = PusherClientOptions(
+            authMethod: AuthMethod.endpoint(authEndpoint: "http://app.pyprentals.com/api/auth"),
+            host: .cluster("ap2")
+        )
+        
+        pusher = Pusher(key: "0b6389c92afdc83c6e18", options: options)
+        pusher.connection.delegate = self
+        //
+        let userid : String = UserDefaults.standard.string(forKey:"uid")!
+        print(userid)
+        let channel = pusher.subscribe("private-user."+userid+".notifications")
+        
+        
+        let _ = channel.bind(eventName: "shift_request_no_more", callback: { (data: Any?) -> Void in
+            
+            if let data = data as? [String : AnyObject] {
+                
+                let alertController = UIAlertController(title: "Success", message: "Testing3", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: {(alert : UIAlertAction!) in
+                    
+                    alertController.dismiss(animated: true, completion: nil)
+                })
+                
+                alertController.addAction(alertAction)
+                
+//                self.present(alertController, animated: true, completion: nil)
+                print(data)
+                
+            }
+        })
+        
+        pusher.connect()
+        print(pusher.connection.url);
+    }
 
 
 }

@@ -49,6 +49,13 @@ class PendingDetailViewController: UIViewController,UITableViewDelegate,UITableV
                 users_Array.add(trade)// trade.user
             }
         }
+        else if (postPickSwapData != nil)
+        {
+            for trade in postPickSwapData?.trades?.trade0 ?? []
+            {
+                users_Array.add(trade)
+            }
+        }
         self.tableview.delegate = self
         self.tableview.dataSource = self
         self.tableview.reloadData()
@@ -198,21 +205,29 @@ class PendingDetailViewController: UIViewController,UITableViewDelegate,UITableV
         
         let cell:MatchTableViewCell = self.tableview.dequeueReusableCell(withIdentifier: "cell03") as! MatchTableViewCell
   
-        let obj = self.users_Array[indexPath.row] as! TradeClass
+        let obj = self.users_Array[indexPath.row]
         
+        if let data = obj as? TradeClass
+        {
+            cell.user2_image.sd_setImage(with: URL(string:data.user?.profilePic ?? ""), placeholderImage: UIImage(named: "ic_profile_default"))
+            cell.user2_title.text = data.user?.username
+        }
         
+        else if let data = obj as? ShiftElement
+        {
+            cell.user2_image.sd_setImage(with: URL(string:data.user?.profilePic ?? ""), placeholderImage: UIImage(named: "ic_profile_default"))
+            cell.user2_title.text = data.user?.username
+        }
         
          cell.user1_image.sd_setImage(with: URL(string:UserDefaults.standard.string(forKey:"profile_pic")!), placeholderImage: UIImage(named: "ic_profile_default"))
-        
-        cell.user2_image.sd_setImage(with: URL(string:obj.user?.profilePic ?? ""), placeholderImage: UIImage(named: "ic_profile_default"))
-        
-        cell.user1_title.text = UserDefaults.standard.string(forKey: "fname")!+" "+UserDefaults.standard.string(forKey: "lname")!
-        
-        cell.user2_title.text = obj.user?.username
-        
         cell.user1_image.layer.masksToBounds = false
         cell.user1_image.layer.cornerRadius = cell.user1_image.frame.height/2
         cell.user1_image.clipsToBounds = true
+        cell.user1_title.text = UserDefaults.standard.string(forKey: "fname")!+" "+UserDefaults.standard.string(forKey: "lname")!
+        
+        
+        
+        
         
         cell.user2_image.layer.masksToBounds = false
         cell.user2_image.layer.cornerRadius = cell.user2_image.frame.height/2
@@ -227,12 +242,28 @@ class PendingDetailViewController: UIViewController,UITableViewDelegate,UITableV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-             let obj = self.users_Array[indexPath.row] as! TradeClass
+        let obj = self.users_Array[indexPath.row]
         
-        StaticData.obj.receiver_id = "\(obj.user?.id ?? 0)"
-        StaticData.obj.receiver_name = obj.user?.username
-        StaticData.obj.receiver_Shiftid = obj.id
-        StaticData.obj.shift_type = obj.shiftType.map { $0.rawValue }
+        if let data = obj as? TradeClass
+        {
+            StaticData.obj.receiver_id = "\(data.user?.id ?? 0)"
+            StaticData.obj.receiver_name = data.user?.username
+            StaticData.obj.receiver_Shiftid = data.id
+            StaticData.obj.shift_type = data.shiftType.map { $0.rawValue }
+        }
+        
+        else if let data = obj as? ShiftElement
+        {
+            StaticData.obj.receiver_id = "\(data.user?.id ?? 0)"
+            StaticData.obj.receiver_name = data.user?.username
+            StaticData.obj.receiver_Shiftid = data.id
+            StaticData.obj.shift_type = SHIFT_TYPE_POST_PICKUP
+        }
+        
+//        StaticData.obj.receiver_id = "\(obj.user?.id ?? 0)"
+//        StaticData.obj.receiver_name = obj.user?.username
+//        StaticData.obj.receiver_Shiftid = obj.id
+//        StaticData.obj.shift_type = obj.shiftType.map { $0.rawValue }
         
         //Chat1ViewController
         

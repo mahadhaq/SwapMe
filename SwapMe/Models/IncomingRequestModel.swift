@@ -82,6 +82,8 @@ struct MsgReqShift: Codable {
         case updatedAt = "updated_at"
         case user
     }
+    
+    
 }
 
 // MARK: - User

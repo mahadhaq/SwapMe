@@ -318,10 +318,10 @@
             filePath = "NotificationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
-            landmarkName = "GetNotesApi()"
-            landmarkType = "7">
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -455,31 +455,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "984C00F6-B33D-4FB5-A76A-59C7FBDE4673"
-            shouldBeEnabled = "No"
+            uuid = "6D29B257-EB19-4BC5-A17C-685EB2E786EC"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SwapMe/PendingSwapViewController.swift"
+            filePath = "SwapMe/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "GetSwapHistoryApi()"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
+            landmarkName = "PushershiftrequestnomoreResponce()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E26D9ADE-3E26-4403-B4D1-877DDCF97102"
-            shouldBeEnabled = "Yes"
+            uuid = "F369717D-24EF-4475-94E3-DE7905B1CA1F"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SwapMe/HomeViewController.swift"
+            filePath = "SwapMe/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "PushershiftstatusResponce()"
             landmarkType = "7">
          </BreakpointContent>
@@ -487,15 +487,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0161A09B-FFC7-4A40-8750-9DB2FC7712A6"
+            uuid = "83B026C3-709D-4DFF-B2CC-858DC21C9235"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SwapMe/HomeViewController.swift"
+            filePath = "SwapMe/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "PushershiftrequestResponce()"
             landmarkType = "7">
          </BreakpointContent>
@@ -503,15 +503,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "94ED7152-BCB0-4C48-BF8F-4BD730E76BF7"
+            uuid = "BE74F701-831F-4E9B-BFCA-869A5B0328F5"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SwapMe/HomeViewController.swift"
+            filePath = "SwapMe/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "PusherNotificationResponce()"
             landmarkType = "7">
          </BreakpointContent>
@@ -519,16 +519,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FF1C7F27-0A6F-4842-94A6-0815F6B8D764"
+            uuid = "2F82ACAD-E7D9-407D-80DC-E4DB219DE3C1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SwapMe/HomeViewController.swift"
+            filePath = "SwapMe/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "PushershiftrequestnomoreResponce()"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "PushershiftstatusResponce()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

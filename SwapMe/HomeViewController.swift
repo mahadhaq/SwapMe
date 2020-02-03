@@ -49,10 +49,7 @@ class HomeViewController: UIViewController,PusherDelegate {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         delegate.LastViewController = self
-        self.PushershiftstatusResponce()
-        self.PusherNotificationResponce()
-        self.PushershiftrequestResponce()
-        self.PushershiftrequestnomoreResponce()
+        delegate.SubscribetoPusher()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,137 +59,7 @@ class HomeViewController: UIViewController,PusherDelegate {
         self.RecoverPWDApi()
     }
     
-    func PusherNotificationResponce(){
-        let options = PusherClientOptions(
-            host: .cluster("ap2")
-        )
-        
-        pusher = Pusher(key: "0b6389c92afdc83c6e18", options: options)
-        pusher.connection.delegate = self
-        pusher.connect()
-        print(pusher.connection.url);
-        //
-        let userid : String = UserDefaults.standard.string(forKey:"uid")!
-        print(userid)
-        let channel = pusher.subscribe("private-user."+userid+".notifications")
-        
-        
-        let _ = channel.bind(eventName: "Notification", callback: { (data: Any?) -> Void in
-            
-            if let data = data as? [String : AnyObject] {
-                print(data)
-                let alertController = UIAlertController(title: "Success", message: "Testing1", preferredStyle: .alert)
-                let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: {(alert : UIAlertAction!) in
-                    
-                    alertController.dismiss(animated: true, completion: nil)
-                })
-                
-                alertController.addAction(alertAction)
-                
-                self.present(alertController, animated: true, completion: nil)
-            }
-        })
-    }
-    
-    func PushershiftrequestResponce(){
-        let options = PusherClientOptions(
-            host: .cluster("ap2")
-        )
-        
-        pusher = Pusher(key: "0b6389c92afdc83c6e18", options: options)
-        pusher.connection.delegate = self
-        pusher.connect()
-        print(pusher.connection.url);
-        //
-        let userid : String = UserDefaults.standard.string(forKey:"uid")!
-        print(userid)
-        let channel = pusher.subscribe("private-user."+userid+".notifications")
-        
-        
-        let _ = channel.bind(eventName: "shift_request", callback: { (data: Any?) -> Void in
-            
-            if let data = data as? [String : AnyObject] {
-                print(data)
-                let alertController = UIAlertController(title: "Success", message: "Accept/Reject", preferredStyle: .alert)
-                let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: {(alert : UIAlertAction!) in
-                    
-                    alertController.dismiss(animated: true, completion: nil)
-                })
-                
-                alertController.addAction(alertAction)
-                
-                self.present(alertController, animated: true, completion: nil)
-            }
-        })
-    }
-    
-    func PushershiftstatusResponce(){
-        let options = PusherClientOptions(
-            host: .cluster("ap2")
-        )
-        
-        pusher = Pusher(key: "0b6389c92afdc83c6e18", options: options)
-        pusher.connection.delegate = self
-        pusher.connect()
-        print(pusher.connection.url);
-        //
-        let userid : String = UserDefaults.standard.string(forKey:"uid")!
-        print(userid)
-        let channel = pusher.subscribe("private-user."+userid+".notifications")
-        
-        
-        let _ = channel.bind(eventName: "shift_status", callback: { (data: Any?) -> Void in
-            
-            if let data = data as? [String : AnyObject] {
-                print(data)
-                
-                let alertController = UIAlertController(title: "Success", message: "Testing2", preferredStyle: .alert)
-                let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: {(alert : UIAlertAction!) in
-                    
-                    alertController.dismiss(animated: true, completion: nil)
-                })
-                
-                alertController.addAction(alertAction)
-                
-                self.present(alertController, animated: true, completion: nil)
-                
-            }
-        })
-    }
-    
-    func PushershiftrequestnomoreResponce(){
-        let options = PusherClientOptions(
-            host: .cluster("ap2")
-        )
-        
-        pusher = Pusher(key: "0b6389c92afdc83c6e18", options: options)
-        pusher.connection.delegate = self
-        pusher.connect()
-        print(pusher.connection.url);
-        //
-        let userid : String = UserDefaults.standard.string(forKey:"uid")!
-        print(userid)
-        let channel = pusher.subscribe("private-user."+userid+".notifications")
-        
-        
-        let _ = channel.bind(eventName: "shift_request_no_more", callback: { (data: Any?) -> Void in
-            
-            if let data = data as? [String : AnyObject] {
-                
-                let alertController = UIAlertController(title: "Success", message: "Testing3", preferredStyle: .alert)
-                let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: {(alert : UIAlertAction!) in
-                    
-                    alertController.dismiss(animated: true, completion: nil)
-                })
-                
-                alertController.addAction(alertAction)
-                
-                self.present(alertController, animated: true, completion: nil)
-                print(data)
-                
-            }
-        })
-    }
+
     
     
     func RecoverPWDApi(){

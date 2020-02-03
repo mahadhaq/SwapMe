@@ -115,6 +115,7 @@ class NotificationViewController: UIViewController,UISearchBarDelegate,UITableVi
                         self.tableview.delegate = self
                         self.tableview.dataSource = self
                         self.tableview.reloadData()
+                        
                             }
                                 catch
                                 {
@@ -267,25 +268,41 @@ class NotificationViewController: UIViewController,UISearchBarDelegate,UITableVi
         else{
             let cell:NotesTableViewCell = self.tableview.dequeueReusableCell(withIdentifier: "cell03") as! NotesTableViewCell
             
-            let obj1 = self.NotificationArray[indexPath.row] as! Datum
+            let obj1 = self.NotificationArray[indexPath.row]
             
-            var dat = obj1.data!
+            let dat = obj1.data!
             
-            
-//            let obj = self.notesArray[indexPath.row] as! Notification
-            
-            
-//            cell.notes_des.text = "Last Updated:"+obj.timestamp
-            if(obj1.data?.request == nil)
+            if(obj1.eventName == EVENT_NAME_SHIFT_REQUEST_STATUS_NOTIFICATION)
             {
-                cell.notes_title.text = obj1.data?.message
-                cell.notes_des.text = obj1.data?.getTitle()
+                cell.notes_title.text = "Swap request \(dat.status ?? "")"
+                cell.notes_des.text = "Your request has been \(dat.status ?? "") by \(dat.request!.user?.username ?? "")\nShift:\(dat.getTitle())"
             }
-            else
+                
+            else if (obj1.eventName == EVENT_NAME_SHIFT_REQUEST_NOTIFICATION)
             {
                 cell.notes_title.text = "New swap request"
                 cell.notes_des.text = "New swap request from \(dat.request!.shift?.user?.username ?? "")\nSHIFT: \(dat.getTitle())"
             }
+            else if(obj1.eventName == EVENT_NAME_SHIFT_REQUEST_NO_MORE_NOTIFICATION)
+            {
+                cell.notes_title.text = "Swap is no more"
+                cell.notes_des.text = "This swap is no more\nShift:\(dat.getTitle())"
+            }
+            
+            else {
+                cell.notes_title.text = obj1.data?.message
+                cell.notes_des.text = obj1.data?.getTitle()
+            }
+            
+//            if(obj1.data?.request == nil)
+//            {
+//
+//            }
+//            else
+//            {
+//                cell.notes_title.text = "New swap request"
+//                cell.notes_des.text = "New swap request from \(dat.request!.shift?.user?.username ?? "")\nSHIFT: \(dat.getTitle())"
+//            }
             cell.notes_title.backgroundColor = postShiftColor
             cell.notes_des.backgroundColor = postShiftColor
             return cell
@@ -295,7 +312,24 @@ class NotificationViewController: UIViewController,UISearchBarDelegate,UITableVi
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 90
+//        let obj1 = self.NotificationArray[indexPath.row] as! Datum
+//
+//        if(obj1.data?.request != nil)
+//        {
+//            return 90
+//        }
+//        else if (obj1.data?.shift?.shiftType == SHIFT_TYPE_POST || obj1.data?.shift?.shiftType == SHIFT_TYPE_PICKUP)
+//        {
+//
+//            return 90
+//        }
+//        else
+//        {
+//            return 120
+//        }
+        
+        
+        return 120
     }
   
 //    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

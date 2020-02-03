@@ -17,6 +17,10 @@ let SHIFT_TYPE_POST_PICKUP = "POST_PICKUP_SHIFT"
 let SHIFT_TYPE_POST = "SHIFT_CREATE"
 let SHIFT_TYPE_PICKUP = "SHIFT_PICKUP"
 
+let EVENT_NAME_NOTIFICATION = "Notification"
+let EVENT_NAME_SHIFT_REQUEST_NOTIFICATION = "shift_request"
+let EVENT_NAME_SHIFT_REQUEST_STATUS_NOTIFICATION = "shift_status"
+let EVENT_NAME_SHIFT_REQUEST_NO_MORE_NOTIFICATION = "shift_request_no_more"
 
 let postShiftColor = #colorLiteral(red: 0.9960784314, green: 0.4784313725, blue: 0.08235294118, alpha: 1)
 let pickShiftColor = #colorLiteral(red: 0.5254901961, green: 0.8431372549, blue: 0.5019607843, alpha: 1)

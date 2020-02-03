@@ -76,7 +76,7 @@ class PendingSwapViewController: UIViewController,UITableViewDelegate,UITableVie
                 do{
                     self.pendingSwapArray.removeAllObjects()
                     let decoder = JSONDecoder()
-                    //                        let str = String(decoding: respones as! Data, as: UTF8.self)
+                    let str = String(decoding: respones.data as! Data, as: UTF8.self)
                     let array = try decoder.decode(PendingSwapModel.self, from: respones.data!)
                     LoginViewController.removeSpinner(spinner: sv)
                     self.view.isUserInteractionEnabled = true
