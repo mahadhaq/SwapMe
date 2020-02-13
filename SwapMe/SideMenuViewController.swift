@@ -13,7 +13,7 @@ class SideMenuViewController: UIViewController,UITableViewDelegate,UITableViewDa
     @IBOutlet weak var tableview: UITableView!
     
     
-    var array:NSMutableArray = ["","Dashboard","My profile","Create Swap","Pending Swap","Swap History","Notes","Messages","Settings","Log Out"]
+    var array:NSMutableArray = ["","DASHBOARD","MY PROFILE","CREATE SWAP","PENDING SWAP","SWAP HISTORY","NOTES","MESSAGES","SETTINGS","LOG OUT"]
   
     
     override func viewDidLoad() {
@@ -63,7 +63,7 @@ class SideMenuViewController: UIViewController,UITableViewDelegate,UITableViewDa
             
             cell.menu_name.text = self.array[indexPath.row] as? String
             cell.menu_name?.font = UIFont.boldSystemFont(ofSize: 18.0)
-            cell.lbl_gen.text = "General"
+            cell.lbl_gen.text = "GENERAL"
             cell.lbl_gen.font = UIFont(name: "Plain", size:22);
             cell.gen_view.alpha = 0
             
@@ -83,7 +83,7 @@ class SideMenuViewController: UIViewController,UITableViewDelegate,UITableViewDa
             
             cell.menu_name.text = self.array[indexPath.row] as? String
             cell.menu_name?.font = UIFont.boldSystemFont(ofSize: 18.0)
-            cell.lbl_gen.text = "Swap"
+            cell.lbl_gen.text = "SWAP"
             cell.lbl_gen.font = UIFont(name: "Plain", size:22);
             cell.gen_view.alpha = 0
             
@@ -116,7 +116,7 @@ class SideMenuViewController: UIViewController,UITableViewDelegate,UITableViewDa
             
             cell.menu_name.text = self.array[indexPath.row] as? String
             cell.menu_name?.font = UIFont.boldSystemFont(ofSize: 18.0)
-            cell.lbl_gen.text = "Other"
+            cell.lbl_gen.text = "OTHER"
             //cell.lbl_gen.font = UIFont(name: "Avenir", size:22);
             cell.lbl_gen.font = UIFont(name: "Plain", size:22);
             cell.gen_view.alpha = 0

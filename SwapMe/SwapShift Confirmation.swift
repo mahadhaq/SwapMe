@@ -42,7 +42,7 @@ class SwapShiftConfirmation: UIViewController,UITextFieldDelegate {
     
     
     
-    
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -94,13 +94,7 @@ class SwapShiftConfirmation: UIViewController,UITextFieldDelegate {
         label[6].Label(x: 10, y: label[5].label.frame.maxY, width: 90, height: 30, txt: "-Start time:", fontsize: 16, bold: false, cornerRadius: 0, border: 0, borderColor: UIColor.clear.cgColor, alignment: .left, bkcolor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), txtcolor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), view: group[0].view)
         startTime[0].Label(x: label[6].label.frame.maxX, y: label[5].label.frame.maxY, width: 200, height: 30, txt: "\(PostShiftvar.Static.starttime[0])-\(PostShiftvar.Static.starttime[1])", fontsize: 16, bold: true, cornerRadius: 0, border: 0, borderColor: UIColor.clear.cgColor, alignment: .left, bkcolor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), txtcolor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), view: group[0].view)
         label[7].Label(x: 10, y: label[6].label.frame.maxY, width: 80, height: 30, txt: "-End time:", fontsize: 16, bold: false, cornerRadius: 0, border: 0, borderColor: UIColor.clear.cgColor, alignment: .left, bkcolor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), txtcolor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), view: group[0].view)
-        endTime[0].Label(x: label[7].label.frame.maxX, y: label[6].label.frame.maxY, width: 200, height: 30, txt: "\(PostShiftvar.Static.starttime[0])-\(PostShiftvar.Static.starttime[1])", fontsize: 16, bold: true, cornerRadius: 0, border: 0, borderColor: UIColor.clear.cgColor, alignment: .left, bkcolor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), txtcolor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), view: group[0].view)
-        
-        
-        
-        
-        
-        
+        endTime[0].Label(x: label[7].label.frame.maxX, y: label[6].label.frame.maxY, width: 200, height: 30, txt: "\(PostShiftvar.Static.endtime[0])-\(PostShiftvar.Static.endtime[1])", fontsize: 16, bold: true, cornerRadius: 0, border: 0, borderColor: UIColor.clear.cgColor, alignment: .left, bkcolor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), txtcolor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), view: group[0].view)
         
         
         // 2nd goroup label
@@ -248,7 +242,8 @@ class SwapShiftConfirmation: UIViewController,UITextFieldDelegate {
     //////////////////////////////////////
     @objc func backButton(_ btn:UIButton){
         print("clicked back button")
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
+        revealViewController()?.setFront(delegate.LastViewController, animated: true)
     }
     
     //////////////////////////////////////
@@ -366,7 +361,8 @@ class SwapShiftConfirmation: UIViewController,UITextFieldDelegate {
                     let alertController = UIAlertController(title: "Success", message: message, preferredStyle: .alert)
                     let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: {(alert : UIAlertAction!) in
                         
-                        self.dismiss(animated:true, completion: nil)
+//                        self.dismiss(animated:true, completion: nil)
+                        self.revealViewController()?.setFront(self.delegate.homeViewController, animated: true)
                         alertController.dismiss(animated: true, completion: nil)
                     })
                     

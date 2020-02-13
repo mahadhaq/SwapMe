@@ -73,6 +73,7 @@
 		FA3B976C23BBEA1F008AAA8E /* PendingSwapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B976B23BBEA1F008AAA8E /* PendingSwapModel.swift */; };
 		FA3DABE923A94FDF009F1542 /* UpdatePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3DABE823A94FDF009F1542 /* UpdatePasswordVC.swift */; };
 		FA3DABEB23A95AE7009F1542 /* TermsAndConditionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3DABEA23A95AE7009F1542 /* TermsAndConditionVC.swift */; };
+		FA67105423ED37F600DC7F55 /* SettinghelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA67105323ED37F600DC7F55 /* SettinghelpVC.swift */; };
 		FC287D91239A837C00FAB3B9 /* SwapShift1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC287D8E239A837B00FAB3B9 /* SwapShift1.swift */; };
 		FC287D92239A837C00FAB3B9 /* MyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC287D8F239A837B00FAB3B9 /* MyProfile.swift */; };
 		FC287D93239A837C00FAB3B9 /* PostShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC287D90239A837C00FAB3B9 /* PostShift.swift */; };
@@ -158,6 +159,7 @@
 		FA3B976B23BBEA1F008AAA8E /* PendingSwapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingSwapModel.swift; sourceTree = "<group>"; };
 		FA3DABE823A94FDF009F1542 /* UpdatePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordVC.swift; sourceTree = "<group>"; };
 		FA3DABEA23A95AE7009F1542 /* TermsAndConditionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionVC.swift; sourceTree = "<group>"; };
+		FA67105323ED37F600DC7F55 /* SettinghelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettinghelpVC.swift; sourceTree = "<group>"; };
 		FC287D8E239A837B00FAB3B9 /* SwapShift1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapShift1.swift; sourceTree = "<group>"; };
 		FC287D8F239A837B00FAB3B9 /* MyProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfile.swift; sourceTree = "<group>"; };
 		FC287D90239A837C00FAB3B9 /* PostShift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostShift.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 			children = (
 				FA3DABE823A94FDF009F1542 /* UpdatePasswordVC.swift */,
 				FA3DABEA23A95AE7009F1542 /* TermsAndConditionVC.swift */,
+				FA67105323ED37F600DC7F55 /* SettinghelpVC.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				AE7A377B2360851700E8596D /* TableViewCell03.swift in Sources */,
 				AE737A3A231E6C34008B6B05 /* SideMenuViewController.swift in Sources */,
 				AE1BD53A230BD64200ED8E76 /* ViewController.swift in Sources */,
+				FA67105423ED37F600DC7F55 /* SettinghelpVC.swift in Sources */,
 				AE737A3C231E8B1B008B6B05 /* ProfileViewController.swift in Sources */,
 				FC287D95239ADDFB00FAB3B9 /* SwapShift2.swift in Sources */,
 				4BBD076D2390069A00A910F4 /* GettAllRequesViewController.swift in Sources */,
@@ -672,7 +676,7 @@
 				CODE_SIGN_ENTITLEMENTS = SwapMe/SwapMe.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.8;
+				CURRENT_PROJECT_VERSION = 1.0.9;
 				DEVELOPMENT_TEAM = W52S4562CG;
 				INFOPLIST_FILE = SwapMe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
@@ -700,7 +704,7 @@
 				CODE_SIGN_ENTITLEMENTS = SwapMe/SwapMe.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.8;
+				CURRENT_PROJECT_VERSION = 1.0.9;
 				DEVELOPMENT_TEAM = W52S4562CG;
 				INFOPLIST_FILE = SwapMe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;

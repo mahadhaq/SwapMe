@@ -42,6 +42,7 @@ class PendingDetailViewController: UIViewController,UITableViewDelegate,UITableV
     }
     
     func ShowDirectSwaps()  {
+        users_Array.removeAllObjects()
         if(pendingSwapData != nil)
         {
             for trade in pendingSwapData?.trades ?? []

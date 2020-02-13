@@ -356,7 +356,12 @@ class PickupSwapViewController: UIViewController,UITextFieldDelegate {
                        print(PickupShiftvar.Static.departmentName)
                        print("\(PickupShiftvar.Static.starttime[0]) - \(PickupShiftvar.Static.starttime[1])")
                        print("\(PickupShiftvar.Static.endtime[0]) - \(PickupShiftvar.Static.endtime[1])")
-            self.present(PickUpShiftConfirmation(), animated: true, completion: nil)
+            
+            
+            let vc = PickUpShiftConfirmation()
+            delegate.LastViewController = self
+            revealViewController()?.setFront(vc, animated: true)
+//            self.present(PickUpShiftConfirmation(), animated: true, completion: nil)
         }
     }
     

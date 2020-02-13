@@ -272,7 +272,7 @@ struct DataClass: Codable {
             
         if(request != nil)
         {
-            return (request!.shift?.isPermanent == "1" ? getFormattedDays(days: (request!.shift?.days)!):(request!.shift?.date)!) + ",\(request!.shift?.departments! ?? ""), \(getFormatedDateTime(dateStr: (request!.shift?.startTime)!))-\(getFormatedDateTime(dateStr: (request!.shift?.endTime)!))"
+            return (request!.shift?.isPermanent == "1" ? getFormattedDays(days: request!.shift?.days ?? ""):request!.shift?.date ?? "") + ",\(request!.shift?.departments ?? ""), \(getFormatedDateTime(dateStr: request!.shift?.startTime ?? ""))-\(getFormatedDateTime(dateStr: request!.shift?.endTime ?? ""))"
         }
         else if (shift?.shiftType == SHIFT_TYPE_POST || shift?.shiftType == SHIFT_TYPE_PICKUP)
         {

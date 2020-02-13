@@ -128,7 +128,9 @@ class SwapShiftViewController2: UIViewController,UITextFieldDelegate {
     let backbtn = UI5()
     let continuebtn = UI5()
 
-
+    let delegate = UIApplication.shared.delegate as! AppDelegate
+    
+    var swapshift1:SwapShiftViewController1?
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.3131641746, green: 0.3097496033, blue: 0.3063026071, alpha: 1)
@@ -226,6 +228,9 @@ class SwapShiftViewController2: UIViewController,UITextFieldDelegate {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        delegate.LastViewController = swapshift1
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(false)
@@ -262,7 +267,8 @@ class SwapShiftViewController2: UIViewController,UITextFieldDelegate {
     //////////////////////////////////////
     @objc func backButton(_ btn:UIButton){
         print("clicked back button")
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
+        revealViewController()?.setFront(delegate.LastViewController, animated: true)
     }
     //////////////////////////////////////
     //////////////////////////////////////
@@ -298,7 +304,13 @@ class SwapShiftViewController2: UIViewController,UITextFieldDelegate {
             print(PickupShiftvar.Static.departmentName)
             print("\(PickupShiftvar.Static.starttime[0]) - \(PickupShiftvar.Static.starttime[1])")
             print("\(PickupShiftvar.Static.endtime[0]) - \(PickupShiftvar.Static.endtime[1])")
-            self.present(SwapShiftConfirmation(), animated: true, completion: nil)
+            
+            
+            let vc = SwapShiftConfirmation()
+            delegate.LastViewController = self
+            revealViewController()?.setFront(vc, animated: true)
+            
+//            self.present(SwapShiftConfirmation(), animated: true, completion: nil)
             }
     }
     

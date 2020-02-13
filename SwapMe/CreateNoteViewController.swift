@@ -18,6 +18,7 @@ class CreateNoteViewController: UIViewController,UITextViewDelegate {
     
     @IBOutlet weak var btn_save: UIButton!
     
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,8 +37,6 @@ class CreateNoteViewController: UIViewController,UITextViewDelegate {
             btn_save.setTitle("Update", for: .normal)
      
         }else{
-            
-            
             
             txt_notes.textColor = UIColor.lightGray
             btn_save.setTitle("Save", for: .normal)
@@ -91,12 +90,15 @@ class CreateNoteViewController: UIViewController,UITextViewDelegate {
         
     }
     
+    @IBAction func BackBtn_Click(_ sender: Any) {
+//        self.dismiss(animated:true, completion: nil)
+        revealViewController()?.setFront(delegate.LastViewController, animated: true)
+    }
+    
+    
     func UpdateNotesApi(){
         
-        
-        
         let  sv = LoginViewController.displaySpinner(onView: self.view)
-        
         
         
         let url : String = "http://app.pyprentals.com/api/notes/"+StaticData.obj.nnid!
@@ -131,11 +133,11 @@ class CreateNoteViewController: UIViewController,UITextViewDelegate {
                     let message = dic["message"] as! String
                     
                     
-                    
                     let alertController = UIAlertController(title: "Success", message: message, preferredStyle: .alert)
                     let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: {(alert : UIAlertAction!) in
                         
-                        self.dismiss(animated:true, completion: nil)
+//                        self.dismiss(animated:true, completion: nil)
+                        self.revealViewController()?.setFront(self.delegate.LastViewController, animated: true)
                         alertController.dismiss(animated: true, completion: nil)
                     })
                     
@@ -150,8 +152,6 @@ class CreateNoteViewController: UIViewController,UITextViewDelegate {
                     self.alertModule(title:"Error", msg:message)
                 }
                 
-                
-                
             case .failure(let error):
                 
                 print(error)
@@ -160,10 +160,8 @@ class CreateNoteViewController: UIViewController,UITextViewDelegate {
                 self.view.isUserInteractionEnabled = true
                 self.alertModule(title:"Error",msg:error.localizedDescription)
                 
-                
             }
         })
-        
         
     }
     
@@ -172,9 +170,7 @@ class CreateNoteViewController: UIViewController,UITextViewDelegate {
     func CreateNotesApi(){
         
         
-        
         let  sv = LoginViewController.displaySpinner(onView: self.view)
-        
         
         
         let url : String = "http://app.pyprentals.com/api/notes"
@@ -213,7 +209,8 @@ class CreateNoteViewController: UIViewController,UITextViewDelegate {
                     let alertController = UIAlertController(title: "Success", message: message, preferredStyle: .alert)
                     let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: {(alert : UIAlertAction!) in
                         
-                        self.dismiss(animated:true, completion: nil)
+//                        self.dismiss(animated:true, completion: nil)
+                        self.revealViewController()?.setFront(self.delegate.LastViewController, animated: true)
                         alertController.dismiss(animated: true, completion: nil)
                     })
                     

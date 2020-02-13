@@ -297,8 +297,13 @@ class NotesViewController: UIViewController,UISearchBarDelegate,UITableViewDeleg
             
            
             
-            self.performSegue(withIdentifier:"gotocreate", sender: self)
+//            self.performSegue(withIdentifier:"gotocreate", sender: self)
             
+            self.delegate.LastViewController = self
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let createNotesVC = sb.instantiateViewController(withIdentifier: "CreateNoteViewController") as! CreateNoteViewController
+            
+            self.revealViewController()?.setFront(createNotesVC, animated: true)
             
           
         }
@@ -365,6 +370,13 @@ class NotesViewController: UIViewController,UISearchBarDelegate,UITableViewDeleg
     }
     
     
-
+    @IBAction func CreateNoteBtn_Click(_ sender: Any) {
+        self.delegate.LastViewController = self
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let createNotesVC = sb.instantiateViewController(withIdentifier: "CreateNoteViewController") as! CreateNoteViewController
+        
+        self.revealViewController()?.setFront(createNotesVC, animated: true)
+    }
+    
 
 }

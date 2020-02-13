@@ -91,6 +91,23 @@ UINavigationControllerDelegate {
         
     }
     
+    var popoverController:UIPopoverPresentationController?
+    @IBAction func notifyBtn_Click(_ sender: Any) {
+         let sb = UIStoryboard(name: "Main", bundle: nil)
+                    let notesVC = sb.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+        //            notesVC.PickupSwapVC = self
+            //        notesVC.isManualSegue = true
+                    notesVC.preferredContentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height)
+                    notesVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+                            
+                            popoverController = notesVC.popoverPresentationController
+            //                popoverController?.delegate = self
+                    popoverController?.sourceView = self.view
+                    popoverController?.sourceRect = self.view.bounds
+                    popoverController?.permittedArrowDirections = .up
+                            
+                    self.present(notesVC, animated: true, completion: nil)
+    }
     
     
     

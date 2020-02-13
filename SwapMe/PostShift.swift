@@ -325,7 +325,10 @@ class PostShiftViewController: UIViewController,UITextFieldDelegate {
         //////// validation end
         
         if validation() {
-            self.present(PostShiftConfirmation(), animated: true, completion: nil)
+            let vc = PostShiftConfirmation()
+            delegate.LastViewController = self
+            revealViewController()?.setFront(vc, animated: true)
+//            self.present(PostShiftConfirmation(), animated: true, completion: nil)
         }
     }
     

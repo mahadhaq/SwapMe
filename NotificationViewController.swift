@@ -32,7 +32,7 @@ class NotificationViewController: UIViewController,UISearchBarDelegate,UITableVi
         
         self.search.delegate = self
         
-         self.GetNotesApi()
+         self.GetNotitificationApi()
    
         
        tableview.tableFooterView = UIView()
@@ -58,14 +58,14 @@ class NotificationViewController: UIViewController,UISearchBarDelegate,UITableVi
     override func viewWillAppear(_ animated: Bool) {
         
        
-       // self.SeenNotiApi()
+        self.SeenNotiApi()
         
    
         
         
     }
     
-    func GetNotesApi(){
+    func GetNotitificationApi(){
         
         
         
@@ -207,6 +207,9 @@ class NotificationViewController: UIViewController,UISearchBarDelegate,UITableVi
                    let json  = value
           
                     print(json)
+                               let dic = json as! NSDictionary
+                               let code = dic["status"] as! NSNumber
+                               print(code)
                  
                    
                    

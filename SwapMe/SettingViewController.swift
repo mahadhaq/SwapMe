@@ -14,6 +14,9 @@ class SettingViewController: UIViewController {
     
     @IBOutlet var TermsLbl: UILabel!
     
+    @IBOutlet var helpLbl: UILabel!
+    
+    
     @IBOutlet weak var btn_menu: UIButton!
     let delegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
@@ -28,6 +31,10 @@ class SettingViewController: UIViewController {
         let tap1 = UITapGestureRecognizer(target: self, action: #selector(SettingViewController.TermstapFunction))
             TermsLbl.isUserInteractionEnabled = true
             TermsLbl.addGestureRecognizer(tap1)
+        
+        let helptap = UITapGestureRecognizer(target: self, action: #selector(SettingViewController.HelptapFunction))
+        helpLbl.isUserInteractionEnabled = true
+        helpLbl.addGestureRecognizer(helptap)
         
         if self.revealViewController() != nil {
                    btn_menu.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
@@ -61,7 +68,34 @@ class SettingViewController: UIViewController {
         revealViewController()?.pushFrontViewController(vc, animated: true)
     }
     
+    @objc func HelptapFunction(sender:UITapGestureRecognizer) {
+                   let sb = UIStoryboard(name: "Main", bundle: nil)
+           let vc = sb.instantiateViewController(withIdentifier: "SettinghelpVC") as! SettinghelpVC
+           
+        delegate.LastViewController = self
+           revealViewController()?.setFront(vc, animated: true)
+       }
     
+    
+    
+    
+    var popoverController:UIPopoverPresentationController?
+    @IBAction func notifyBtn_Click(_ sender: Any) {
+         let sb = UIStoryboard(name: "Main", bundle: nil)
+                    let notesVC = sb.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+        //            notesVC.PickupSwapVC = self
+            //        notesVC.isManualSegue = true
+                    notesVC.preferredContentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height)
+                    notesVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+                            
+                            popoverController = notesVC.popoverPresentationController
+            //                popoverController?.delegate = self
+                    popoverController?.sourceView = self.view
+                    popoverController?.sourceRect = self.view.bounds
+                    popoverController?.permittedArrowDirections = .up
+                            
+                    self.present(notesVC, animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

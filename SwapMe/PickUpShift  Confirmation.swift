@@ -41,7 +41,7 @@ class PickUpShiftConfirmation: UIViewController {
     let backbtn = UI4()
     let findbtn = UI4()
     
-    
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -144,7 +144,8 @@ class PickUpShiftConfirmation: UIViewController {
     //////////////////////////////////////
     @objc func backButton(_ btn:UIButton){
         print("clicked back button")
-        self.dismiss(animated: true, completion: nil)
+        revealViewController()?.setFront(delegate.LastViewController, animated: true)
+//        self.dismiss(animated: true, completion: nil)
     }
     
     //////////////////////////////////////
@@ -214,26 +215,28 @@ class PickUpShiftConfirmation: UIViewController {
                     
                     let message = dic["message"] as! String
                     
-                    let notificationContent = UNMutableNotificationContent()
-                    notificationContent.title = "SwapMe"
-                    notificationContent.body = message
-                    notificationContent.badge = NSNumber(value: 1)
-                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5,
-                                                                    repeats: false)
-                    let request = UNNotificationRequest(identifier: "testNotification",
-                                                        content:notificationContent,
-                                                        trigger: trigger)
-                    
-                    self.userNotificationCenter.add(request) { (error) in
-                        if let error = error {
-                            print("Notification Error: ", error)
-                        }
-                    }
+//                    let notificationContent = UNMutableNotificationContent()
+//                    notificationContent.title = "SwapMe"
+//                    notificationContent.body = message
+//                    notificationContent.badge = NSNumber(value: 1)
+//                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5,
+//                                                                    repeats: false)
+//                    let request = UNNotificationRequest(identifier: "testNotification",
+//                                                        content:notificationContent,
+//                                                        trigger: trigger)
+//
+//                    self.userNotificationCenter.add(request) { (error) in
+//                        if let error = error {
+//                            print("Notification Error: ", error)
+//                        }
+//                    }
                     
                     let alertController = UIAlertController(title: "Success", message: message, preferredStyle: .alert)
                     let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: {(alert : UIAlertAction!) in
                         
-                        self.dismiss(animated:true, completion: nil)
+                        self.revealViewController()?.setFront(self.delegate.homeViewController, animated: true)
+//                        self.dismiss(animated:true, completion: nil)
+                        
                         alertController.dismiss(animated: true, completion: nil)
                     })
                     

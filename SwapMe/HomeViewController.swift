@@ -183,6 +183,16 @@ class HomeViewController: UIViewController,PusherDelegate {
     }
     
     
+    @IBAction func NotesBtn_Click(_ sender: Any) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+                              let vc = sb.instantiateViewController(withIdentifier: "NotesViewController") as! NotesViewController
+                              
+                              let delegate = UIApplication.shared.delegate as! AppDelegate
+                              delegate.LastViewController = self
+                              revealViewController()?.setFront(vc, animated: true)
+    }
+    
+    
     
     var popoverController:UIPopoverPresentationController?
     @IBAction func notifyBtn_Click(_ sender: Any) {

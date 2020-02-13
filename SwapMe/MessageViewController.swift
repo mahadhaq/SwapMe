@@ -210,7 +210,7 @@ class MessageViewController: UIViewController,UISearchBarDelegate,UITableViewDel
                                     }
                                     formatter.dateFormat = "hh:mm a"
                                     
-                                    shiftdetail = "\(date!),\(departments), \(formatter.string(from: starttime)) - \(formatter.string(from: endtime))"
+                                    shiftdetail = "\(date ?? ""),\(departments), \(formatter.string(from: starttime)) - \(formatter.string(from: endtime))"
                                     print(shiftdetail)
                                     
                                 }

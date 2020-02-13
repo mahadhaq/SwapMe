@@ -318,7 +318,13 @@ class SwapShiftViewController1: UIViewController {
             print("\(PostShiftvar.Static.starttime[0]) - \(PostShiftvar.Static.starttime[1])")
             print("\(PostShiftvar.Static.endtime[0]) - \(PostShiftvar.Static.endtime[1])")
             
-            self.present(SwapShiftViewController2(), animated: true, completion: nil)
+            let vc = SwapShiftViewController2()
+            
+            vc.swapshift1 = self
+            
+            delegate.LastViewController = self
+            revealViewController()?.setFront(vc, animated: true)
+//            self.present(SwapShiftViewController2(), animated: true, completion: nil)
         }
 
 
@@ -369,7 +375,10 @@ class SwapShiftViewController1: UIViewController {
             print("Select a Department: Notification")
             showtoast = true
             toastmessage = "Select a Department"
-        }else{PostShiftvar.Static.departmentName = departmentlabel.label.text!}
+        }else{
+            PostShiftvar.Static.departmentName = departmentlabel.label.text!
+            
+        }
         
         /////////////// startTime validation
         if starttime.Switch.isOn == true {
@@ -602,6 +611,7 @@ class SwapShiftViewController1: UIViewController {
         starttimeFalse.view.tag = 1
         starttimeFalse.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SelectStartTimeButton(_:)) ))
         starttimeFalselabel[0].Label(x: 20, y: 0, width: (x-100)/2, height: 50, txt: "Select Start Time", fontsize: 16, bold: false, cornerRadius: 0, border: 0, borderColor: UIColor.clear.cgColor, alignment: .center, bkcolor: .clear, txtcolor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), view: starttimeFalse.view)
+        
         starttimeFalselabel[1].Label(x: starttimeFalselabel[0].label.frame.maxX, y: 0, width: (x-100)/2, height: 50, txt: "0h:0m", fontsize: 16, bold: false, cornerRadius: 0, border: 0, borderColor: UIColor.clear.cgColor, alignment: .center, bkcolor: .clear, txtcolor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), view: starttimeFalse.view)
 
         //is ON
@@ -1153,7 +1163,10 @@ class UI1: UIView {
         let dateFormatter: DateFormatter = DateFormatter()
         if datepick {
             dateFormatter.dateFormat = self.datePickerFormat
-        }else{dateFormatter.dateFormat = self.timePickerFormat}
+        }else{
+            dateFormatter.dateFormat = self.timePickerFormat
+            
+        }
         selectedDate = dateFormatter.string(from: sender.date)
         print("\(selectedDate)")
     }
