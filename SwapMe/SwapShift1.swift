@@ -204,7 +204,7 @@ class SwapShiftViewController1: UIViewController {
 
         note.Label(x: 30, y: endtimeFalse.view.frame.maxY, width: x-60, height: 50, txt: "ALL SHIFTS MUST BE EXACT TIMES OR YOU WILL NOT RECEIVE A MATCH!!!", fontsize: 16, bold: false, cornerRadius: 0, border: 0, borderColor: UIColor.clear.cgColor, alignment: .left
             , bkcolor: .clear, txtcolor: #colorLiteral(red: 0.5995008349, green: 0.8179860711, blue: 0.5239533782, alpha: 1), view: body.scrollview)
-
+        note.label.lineBreakMode = .byWordWrapping
         line3.View(x: 30, y: note.label.frame.maxY+10, width: x-60, height: 1, bkcolor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), cornerRadius: 0, border: 0, borderColor: .clear, view: body.scrollview)
         body.scrollview.contentSize.height = line3.view.frame.maxY+10
 
